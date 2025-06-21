@@ -123,6 +123,8 @@ def bad_request(error):
 def not_found(error):
     return jsonify({'error': 'Not found', 'message': error.description}), 404
 
+import os
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 8080))
+    app.run(debug=True, host='0.0.0.0', port=port)
